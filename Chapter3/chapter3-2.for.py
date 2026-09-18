@@ -294,3 +294,101 @@ for c in colors:
 # green            green
 # blue             blue
 # white 
+
+#---------- pass文 -------------------------------------------------
+#空の実行文を作る
+x = -1
+def search_value(x):
+    if x < 0:
+        print("x is negative")
+    elif x == 0:
+        # no error
+        pass
+    elif 0 < x < 5:
+        print("x is positive and smaller than 5")
+    else:
+        print("x is positive and larger than or equal to 5")
+
+#------練習問題 練習問題　練習問題　練習問題　練習問題-------------------------------------------------------------
+#------練習問題 練習問題　練習問題　練習問題　練習問題-------------------------------------------------------------
+
+from time import sleep
+x = 1
+def yeah(x):
+    while True:
+        print("Yeah!", x)
+        if x == 10:
+            break
+        x += 1 
+        sleep(1)    # 1秒待つってこと
+
+
+#------練習問題 練習問題　練習問題　練習問題　練習問題-------------------------------------------------------------
+#------練習問題 練習問題　練習問題　練習問題　練習問題-------------------------------------------------------------
+def collect_engwords(str_engsentence):
+    str_engsentence = str_engsentence.replace("," , "").replace(".", "")
+    a = str_engsentence.split(" ")
+    result = []
+    for x in a:
+        # print(x)
+        if len(x) >= 3:
+            result.append(x)
+    return result
+
+# print(collect_engwords('Unfortunately no, it requires something with a little more kick, plutonium.') == ['Unfortunately', 'requires', 'something', 'with', 'little', 'more', 'kick', 'plutonium'])
+
+
+
+#------練習問題 練習問題　練習問題　練習問題　練習問題-------------------------------------------------------------
+#------練習問題 練習問題　練習問題　練習問題　練習問題-------------------------------------------------------------
+def swap_lists(ln1, ln2):
+    ln1_change_odd = []
+    ln2_change_odd = []
+    for i in range(len(ln1)):   #["12345"]ならi = 0~4
+        # print(i)
+        if i%2 != 0:    #インデックス(i)が奇数
+            ln1_change_odd.append(ln2[i])
+            ln2_change_odd.append(ln1[i])
+        else:
+            ln1_change_odd.append(ln1[i])
+            ln2_change_odd.append(ln2[i])
+        # print(ln1_change_odd, ln2_change_odd)
+    return(ln1_change_odd, ln2_change_odd)
+
+# print(swap_lists([1, 2, 3, 4, 5], ['a', 'b', 'c', 'd', 'e']) == ([1, 'b', 3, 'd', 5], ['a', 2, 'c', 4, 'e']))
+
+
+
+
+#------練習問題 練習問題　練習問題　練習問題　練習問題-------------------------------------------------------------
+#------練習問題 練習問題　練習問題　練習問題　練習問題-------------------------------------------------------------
+def count_capitalletters(str1):
+    upper_count = 0
+    for x in str1:
+        # print(x)
+        if x.isalpha() == True: # .isaplhpa 英字かどうかの判定
+            if x == x.upper():
+                upper_count += 1
+                # print(upper_count)
+    return upper_count
+
+# print(count_capitalletters('Que Será, Será') == 3)
+
+
+
+#------練習問題 練習問題　練習問題　練習問題　練習問題-------------------------------------------------------------
+#------練習問題 練習問題　練習問題　練習問題　練習問題-------------------------------------------------------------
+def identify_codons(str_augc):
+    str_threetimes = []
+    for i in range(len(str_augc)//3):
+        str_threetimes.append(str_augc[3*i:3*i+3])
+    return str_threetimes
+
+print(identify_codons('CCCCCGGCACCT') == ['CCC', 'CCG', 'GCA', 'CCT'])
+
+
+
+#------練習問題 練習問題　練習問題　練習問題　練習問題-------------------------------------------------------------
+#------練習問題 練習問題　練習問題　練習問題　練習問題-------------------------------------------------------------
+def add_commas(int1):
+    
