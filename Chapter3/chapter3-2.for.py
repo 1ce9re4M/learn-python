@@ -384,11 +384,98 @@ def identify_codons(str_augc):
         str_threetimes.append(str_augc[3*i:3*i+3])
     return str_threetimes
 
-print(identify_codons('CCCCCGGCACCT') == ['CCC', 'CCG', 'GCA', 'CCT'])
+# print(identify_codons('CCCCCGGCACCT') == ['CCC', 'CCG', 'GCA', 'CCT'])
 
 
 
 #------練習問題 練習問題　練習問題　練習問題　練習問題-------------------------------------------------------------
 #------練習問題 練習問題　練習問題　練習問題　練習問題-------------------------------------------------------------
 def add_commas(int1):
-    
+    int2 = int1.copy()
+    count = 0
+    for x in range(len(int1)):
+        if x%3 == 0 and x != 0:
+            int2 = int2[:x+count+1] + "," + int2[x+count+2:]
+            count += 1
+
+# 2回目
+def add_commas(int1):
+    count = 1
+    list1 = list(str(int1))
+    str1 = ""
+    for i in range(len(list1)-1, -1, -1):
+        str1 = list1[i] + str1
+        if i%3 == 0 and i != 0:
+            str1 = "," + str1
+            # print(str1)
+        count += 1
+    return str1
+# print(add_commas(1123456789))
+# ^^^^^^^^^^^^^^^^^^^^^模範解答　模範解答　模範解答　模範解答　^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# ^^^^^^^^^^^^^^^^^^^^^模範解答　模範解答　模範解答　模範解答　^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+def add_commas(int1):
+    list1 = list(str(int1))
+    str1 = ""
+    ccnt = 1
+    for i in range(len(list1)-1, -1, -1):   #(start, stop, step)
+        print(i)
+        str1 = list1[i] + str1
+        if ccnt % 3 == 0 and ccnt != 0:
+            str1 = "," + str1
+        ccnt += 1
+    return str1    
+
+
+#------練習問題 練習問題　練習問題　練習問題　練習問題-------------------------------------------------------------
+#------練習問題 練習問題　練習問題　練習問題　練習問題-------------------------------------------------------------
+def sum_strings(list1):
+    str1 = ""
+    str_list1 = [str(i) for i in list1]
+
+    for k in range(len(str_list1)-1, -1, -1):
+        if k == len(str_list1)-1 and len(str_list1) > 0:
+            str1 = " and " + str_list1[k]
+        elif k == 0:
+            str1 = str_list1[k] + str1
+        else:
+            str1 = ", " + str_list1[k] + str1
+    return str1
+
+# print(sum_strings(['a', 'b', 'c', 'd']))
+# print(sum_strings(['a']))
+# print(sum_strings(["a", "b"]))
+# print(sum_strings([1, 2, 3]) == '1, 2 and 3')
+
+
+
+#------練習問題 練習問題　練習問題　練習問題　練習問題-------------------------------------------------------------
+#------練習問題 練習問題　練習問題　練習問題　練習問題-------------------------------------------------------------
+def handle_collision2(dic1, str1):
+    #str1の長さのキーがなければ長さをキー、str1自体を値とする
+    if len(str1) not in dic1:
+        dic1[len(str1)] = str1
+        return dic1
+
+    #lstr1の長さがすでにdic1のキーとして存在している場合
+    for x in dic1:
+        if x == len(str1):
+            #len(str1)+1 ~ 10,1 ~ len(str1)-1 までで
+            # 空いている数字をキー,str1を値として追加する
+            for j in range(10):
+                i = (len(str1)+1+j)%10
+                if i not in dic1 and i != 0:
+                    dic1[i] = str1
+                    return dic1
+    return dic1
+
+                
+# dic1_orig = {6: 'Styles', 4: 'Link', 7: 'Ackroyd'}
+# print(handle_collision2(dic1_orig, 'Big Four'))
+# print(dic1_orig == {6: 'Styles', 4: 'Link', 7: 'Ackroyd', 8: 'Big Four'})
+# dic1_orig = {6: 'Styles', 4: 'Link', 7: 'Ackroyd', 8: 'Big Four', 10: 'Blue Train', 9: 'End House'}
+# print(handle_collision2(dic1_orig, 'Edgware'))
+# print(dic1_orig == {6: 'Styles', 4: 'Link', 7: 'Ackroyd', 8: 'Big Four', 10: 'Blue Train', 9: 'End House', 1: 'Edgware'})
+# dic1_orig = {6: 'Styles', 4: 'Link', 7: 'Ackroyd', 8: 'Big Four', 10: 'Blue Train', 9: 'End House', 1: 'Edgware', 2: 'Orient', 3: 'Three Act', 5: 'Clouds'}
+# print(handle_collision2(dic1_orig, 'ABC'))
+# print(dic1_orig == {6: 'Styles', 4: 'Link', 7: 'Ackroyd', 8: 'Big Four', 10: 'Blue Train', 9: 'End House', 1: 'Edgware', 2: 'Orient', 3: 'Three Act', 5: 'Clouds'})
+
